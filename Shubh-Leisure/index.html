@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Shubh Leisure — Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#0d2233;
+    --deep:#0b1720;
+    --beige:#f5efe6;
+    --muted:#6f7a85;
+    --glass-soft-1: rgba(180,205,230,0.92);
+    --glass-soft-2: rgba(205,225,245,0.92);
+    --gold-soft-1:#e7d9b8;
+    --gold-soft-2:#f3e7cf
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,Arial;
+    color:var(--deep);
+    min-height:100vh;
+    background:linear-gradient(180deg,var(--beige),#fbfaf8)
+  }
+
+  .backdrop{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background-image:url('https://blog.venuelook.com/wp-content/uploads/2023/07/South-Indian-Wedding-D%C3%A9cor-e1689408167894.jpeg');
+    background-size:cover;
+    background-position:center;
+    filter:blur(7px) brightness(.82);
+    transform:scale(1.03);
+    pointer-events:none;
+  }
+
+  .backdrop::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(245,238,230,0.14),rgba(10,18,26,0.12))
+  }
+
+  header{
+    position:fixed;
+    top:16px;
+    left:16px;
+    right:16px;
+    z-index:30;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 18px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.72);
+    backdrop-filter: blur(6px) saturate(1.05);
+    box-shadow:0 10px 40px rgba(8,12,20,0.12);
+    border:1px solid rgba(255,255,255,0.6)
+  }
+
+  .nav-left,.nav-right{display:flex;gap:12px;align-items:center}
+
+  .bpsy{
+    font-weight:700;
+    font-family:'Playfair Display';
+    color:var(--navy);
+    padding:8px 12px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.9);
+  }
+
+  .brand-centre .site{
+    font-family:'Playfair Display';
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700
+  }
+
+  .nav-right a{
+    text-decoration:none;
+    color:var(--deep);
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:8px
+  }
+
+  .page{
+    position:relative;
+    z-index:12;
+    max-width:1200px;
+    margin:140px auto;
+    padding:0 24px
+  }
+
+  .hero{
+    display:flex;
+    gap:32px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap
+  }
+
+  .hero-left{flex:1 1 48%;min-width:260px}
+
+  .title{
+    font-family:'Playfair Display';
+    font-size:64px;
+    line-height:0.98;
+    margin:0
+  }
+
+  .subtitle{
+    margin-top:14px;
+    font-size:18px;
+    font-weight:600;
+    max-width:40ch
+  }
+
+  .cta-row{
+    margin-top:20px;
+    display:flex;
+    gap:14px;
+    position:relative;
+    z-index:50
+  }
+
+  .btn-prem{
+    display:inline-flex;
+    align-items:center;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:700;
+    text-decoration:none
+  }
+
+  .btn-login{
+    background:linear-gradient(90deg,var(--glass-soft-1),var(--glass-soft-2));
+    color:#0a1a26
+  }
+
+  .btn-pack{
+    background:linear-gradient(90deg,var(--gold-soft-1),var(--gold-soft-2));
+    color:#11202b
+  }
+
+  .hero-right{flex:0 0 48%;min-width:320px;display:flex;justify-content:flex-end}
+
+  .hero-card{
+    width:100%;
+    max-width:540px;
+    height:420px;
+    border-radius:22px;
+    overflow:hidden;
+    pointer-events:none;
+  }
+
+  .hero-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    pointer-events:none;
+  }
+
+  footer{
+    margin-top:64px;
+    background:linear-gradient(180deg,#071325,#0d2130);
+    color:#f5efe6;
+    padding:36px 26px;
+    border-radius:12px;
+    text-align:center
+  }
+
+  .copy{
+    margin-top:12px;
+    font-size:13px;
+    opacity:0.85
+  }
+</style>
+</head>
+
+<body>
+
+<div class="backdrop" aria-hidden="true"></div>
+
+<header>
+  <div class="nav-left">
+    <div class="bpsy">BPSY</div>
+  </div>
+
+  <div class="brand-centre">
+    <div class="site">Shubh Leisure</div>
+  </div>
+
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About</a>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+
+    <div class="hero-left">
+      <h1 class="title">Shubh Leisure</h1>
+      <p class="subtitle">
+        Modern. Minimal. Premium. We design ceremonial experiences with calm, curated detail.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-prem btn-login" href="login.html">Login</a>
+        <a class="btn-prem btn-pack" href="packages.html">View Packages</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <img src="https://www.thegrandindianwedding.com/wp-content/uploads/2017/12/grand-indian-destination-weddings-scaled.jpg" alt="hero image">
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div style="font-family:'Playfair Display';font-size:18px;font-weight:600;">
+    Shubh Leisure
+  </div>
+  <div style="margin-top:8px;">Crafted Experiences • Bespoke • Elegant</div>
+  <div style="margin-top:10px;">Email: contact@shubhLeisure.com • Phone: +91 98765 43210</div>
+  <div class="copy">© 2022 Shubh Leisure — All rights reserved</div>
+</footer>
+
+</body>
+</html>

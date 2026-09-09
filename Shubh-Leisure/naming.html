@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Naming Ceremony — Shubh Leisure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0d2233;
+  --deep:#11202b;
+  --beige:#f5efe6;
+  --muted:#5c6670;
+  --gold:#cdbb8a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter;
+  background:linear-gradient(180deg,var(--beige),#faf7f3);
+  color:var(--deep);
+}
+
+.backdrop{
+  position:fixed;inset:0;z-index:0;
+  background:url('https://blog.venuelook.com/wp-content/uploads/2023/07/South-Indian-Wedding-D%C3%A9cor-e1689408167894.jpeg') center/cover;
+  filter:blur(7px) brightness(.82);
+}
+.backdrop::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.4);
+}
+
+header{
+  position:fixed;top:18px;left:18px;right:18px;z-index:30;
+  background:rgba(255,255,255,.78);
+  padding:10px 18px;border-radius:12px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.brand{font-family:'Playfair Display';font-weight:700;color:var(--navy)}
+nav a{margin-left:14px;text-decoration:none;color:var(--deep);font-weight:600}
+
+.closing-line{
+  margin:-32px 0 4px;
+  font-family:'Playfair Display';
+  font-size:20px;
+  font-weight:600;
+  color:#11202b;
+}
+
+main{
+  position:relative;z-index:10;
+  max-width:1100px;margin:140px auto;padding:24px;
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:36px;
+  align-items:center;
+}
+.hero img{
+  width:100%;height:420px;
+  object-fit:cover;border-radius:20px;
+  box-shadow:0 30px 60px rgba(0,0,0,.18);
+}
+
+h1{
+  font-family:'Playfair Display';
+  font-size:46px;
+  margin:0 0 6px;
+}
+
+/* PRICE */
+.price{
+  font-family:'Playfair Display';
+  font-size:22px;
+  color:#11202b;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+/* SUBTITLE */
+.subtitle{
+  color:#040c14;
+  max-width:48ch;
+  line-height:1.6;
+  font-weight:500;
+}
+
+/* SECTIONS */
+.section{margin-top:60px}
+.section h2{
+  font-family:'Playfair Display';
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+/* BOX GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.box{
+  background:rgba(255,255,255,.9);
+  padding:22px;
+  border-radius:16px;
+}
+.box h3{
+  font-family:'Playfair Display';
+  margin-top:0;
+}
+.box p{
+  color:#3f4953;
+  font-weight:500;
+}
+
+/* PROCESS */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.step{
+  background:rgba(255,255,255,.85);
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+}
+.step span{
+  font-size:22px;
+  font-weight:700;
+  color:var(--gold);
+}
+.step p{
+  margin-top:6px;
+  font-weight:500;
+  color:#3f4953;
+}
+
+/* CTA */
+.cta{
+  margin-top:60px;
+  background:linear-gradient(90deg,#0d2233,#142f46);
+  padding:40px;
+  border-radius:22px;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.cta p{opacity:.95}
+.cta a{
+  background:white;
+  color:#0d2233;
+  padding:14px 22px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* FOOTER */
+footer{
+  position:relative;z-index:20;
+  margin:60px auto 30px;
+  text-align:center;
+  background:rgba(255,255,255,.85);
+  padding:20px;border-radius:12px;
+}
+.copy{font-size:14px;color:#6f7a85}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .grid,.steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="backdrop"></div>
+
+<header>
+  <div class="brand">Shubh Leisure</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="packages.html">Packages</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Naming Ceremony</h1>
+    <div class="price">Starting from ₹99,999</div>
+    <p class="subtitle">
+      A gentle and joyous celebration welcoming new beginnings,
+      thoughtfully planned with warmth, tradition,
+      and family-first care.
+    </p>
+  </div>
+  <img src="https://i.pinimg.com/474x/cc/05/02/cc0502924e7011af896800b63bf59767.jpg">
+</section>
+
+<!-- INCLUDES -->
+<section class="section">
+  <h2>What’s Included</h2>
+  <div class="grid">
+    <div class="box"><h3>Stage & Cradle Setup</h3><p>Soft, elegant arrangements for the ceremony moment.</p></div>
+    <div class="box"><h3>Lighting and Complete Decoration</h3><p>Warm lighting for the calm ambience.Beautifully styled spaces for family photographs.Gentle colour palettes with refined floral touches.</p></div>
+    <div class="box"><h3>Vendor Coordination</h3><p>Smooth coordination with all essential service providers.</p></div>
+    <div class="box"><h3>Ritual Flow Planning</h3><p>Well-timed ceremony moments without rush.</p></div>
+    <div class="box"><h3>Setup & Wind-up Support</h3><p>Complete setup and clean wrap-up.</p></div>
+    <div class="box"><h3>Custom Family Requests</h3><p>Special preferences handled with care.</p></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <p class="closing-line">and many more</p>
+  <h2>Our Process</h2>
+  <div class="steps">
+    <div class="step"><span>01</span><p>Understanding Traditions</p></div>
+    <div class="step"><span>02</span><p>Design & Planning</p></div>
+    <div class="step"><span>03</span><p>On-site Setup</p></div>
+    <div class="step"><span>04</span><p>Graceful Execution</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div>
+    <h2 style="margin:0">Planning a naming ceremony?</h2>
+    <p>We’ll ensure every moment feels calm and special.</p>
+  </div>
+  <a href="book.html">Book This Package</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="copy">©️ 2022 Shubh Leisure — All rights reserved</div>
+</footer>
+
+</body>
+</html>

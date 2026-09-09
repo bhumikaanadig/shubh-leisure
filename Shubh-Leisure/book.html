@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book — Shubh Leisure</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+  :root{ --navy:#0d2233; --deep:#11202b; --beige:#f5efe6; --gold:#d9c79a; --muted:#6f7a85 }
+  *{box-sizing:border-box}
+  body{ margin:0; font-family:Inter, Arial; background:linear-gradient(180deg,var(--beige), #faf7f3); color:var(--deep) }
+
+  .backdrop{ position:fixed; inset:0; z-index:0; background-image: url('https://blog.venuelook.com/wp-content/uploads/2023/07/South-Indian-Wedding-D%C3%A9cor-e1689408167894.jpeg'); background-size:cover; background-position:center; filter: blur(7px) brightness(.82); transform: scale(1.03) }
+  .backdrop::after{ content:""; position:absolute; inset:0; background: rgba(255,255,255,0.36); }
+
+  header{ position:fixed; top:18px; left:18px; right:18px; z-index:30; display:flex; justify-content:space-between; align-items:center; padding:10px 18px; border-radius:12px; background: rgba(255,255,255,0.78); backdrop-filter: blur(6px); box-shadow:0 10px 30px rgba(10,16,24,0.08); border:1px solid rgba(255,255,255,0.6)}
+  .brand { font-family:'Playfair Display'; font-weight:700; color:var(--navy) }
+  nav a { margin-left:12px; text-decoration:none; color:var(--deep); font-weight:600 }
+
+  .page{ position:relative; z-index:10; max-width:980px; margin:120px auto; padding:24px }
+
+  .title{ font-family:'Playfair Display'; font-size:40px; text-align:center; margin-bottom:8px }
+  .divider{ width:80px; height:3px; background:var(--gold); margin:0 auto 28px; border-radius:8px }
+
+  .card{ background: rgba(255,255,255,0.9); padding:26px; border-radius:14px; border:1px solid rgba(0,0,0,0.04); box-shadow:0 18px 40px rgba(0,0,0,0.12) }
+
+  .form-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:14px }
+  label{ display:block; font-size:14px; color:var(--muted); margin-bottom:6px }
+  input, select, textarea { width:100%; padding:10px; border-radius:10px; border:1px solid #eef2f6; font-size:15px; }
+  textarea { min-height:120px; resize:vertical }
+
+  .full { grid-column: 1 / -1 }
+  .btn{ margin-top:12px; padding:12px 16px; border-radius:12px; background:linear-gradient(90deg,var(--navy),#16324a); color:#fff; border:none; cursor:pointer; font-weight:700 }
+
+  .note{ margin-top:12px; color:var(--muted); font-size:14px }
+
+  @media (max-width:820px) {
+    .form-grid{ grid-template-columns: 1fr }
+    .title{ font-size:32px }
+  }
+</style>
+</head>
+<body>
+
+<div class="backdrop" aria-hidden="true"></div>
+
+<header>
+  <div class="brand">Shubh Leisure</div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/contact">Contact</a>
+    <a href="/about">About</a>
+  </nav>
+</header>
+
+<main class="page">
+  <h1 class="title">Book an Event</h1>
+  <div class="divider"></div>
+
+  <section class="card">
+    <h2 style="font-family:'Playfair Display'; margin:0 0 12px 0">Booking Details</h2>
+
+    <form id="bookingForm">
+      <div class="form-grid">
+        <div>
+          <label for="name">Full name</label>
+          <input id="name" required>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" required>
+        </div>
+
+        <div>
+          <label for="type">Event type</label>
+          <select id="type">
+            <option>Wedding</option>
+            <option>Engagement</option>
+            <option>Housewarming/Griha Pravesh</option>
+            <option>Naming Ceremony</option>
+            <option>Birthday</option>
+            <option>Corporate Party</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="date">Preferred date</label>
+          <input id="date" type="date" required>
+        </div>
+
+        <div>
+          <label for="guests">Estimated guests</label>
+          <input id="guests">
+        </div>
+
+        <div>
+          <label for="budget">Approx. budget</label>
+          <input id="budget">
+        </div>
+
+        <div>
+          <label for="venue">Venue address</label>
+          <input id="venue">
+        </div>
+
+        <div class="full">
+          <label for="notes">Notes / Requirements</label>
+          <textarea id="notes"></textarea>
+        </div>
+
+        <div class="full" style="display:flex; gap:12px; align-items:center">
+          <button type="button" class="btn" id="sendBtn">Submit Booking Request</button>
+          <div class="note">We save your request locally for this demo.</div>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
+
+<script>
+document.getElementById('sendBtn').addEventListener('click', ()=>{
+
+  const nameVal = document.getElementById('name').value.trim();
+  const emailVal = document.getElementById('email').value.trim();
+  const phoneVal = document.getElementById('phone').value.trim();
+  const dateVal = document.getElementById('date').value;
+
+  if(!nameVal || !emailVal || !phoneVal || !dateVal){
+    alert('Please fill in name, email, phone and preferred date.');
+    return;
+  }
+
+  const booking = {
+    name: nameVal,
+    email: emailVal,
+    phone: phoneVal,
+    type: document.getElementById('type').value,
+    date: dateVal,
+    guests: document.getElementById('guests').value,
+    budget: document.getElementById('budget').value,
+    venue: document.getElementById('venue').value,
+    notes: document.getElementById('notes').value
+  };
+
+  // save booking first
+  localStorage.setItem("currentBooking", JSON.stringify(booking));
+
+  // 🔐 LOGIN CHECK ONLY HERE
+  if(localStorage.getItem("isLoggedIn") !== "true"){
+    sessionStorage.setItem("pendingBooking", "yes");
+    window.location.href = "login.html";
+    return;
+  }
+
+  // already logged in → payment
+  window.location.href = "payment.html";
+});
+</script>
+
+
+</body>
+</html>

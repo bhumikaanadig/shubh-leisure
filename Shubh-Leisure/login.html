@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Login • Shubh Leisure</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#0d2233;
+    --deep:#11202b;
+    --beige:#f5efe6;
+    --muted:#6f7a85;
+    --gold:#d9c79a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter, Arial;
+    background: linear-gradient(180deg,var(--beige), #faf7f3);
+    color:var(--deep);
+    min-height:100vh;
+  }
+
+  .backdrop{
+    position:fixed; inset:0; z-index:0;
+    background-image: url('https://blog.venuelook.com/wp-content/uploads/2023/07/South-Indian-Wedding-D%C3%A9cor-e1689408167894.jpeg');
+    background-size:cover; background-position:center;
+    filter: blur(7px) brightness(.82);
+    transform: scale(1.03);
+    pointer-events:none;
+  }
+  .backdrop::after{ content:""; position:absolute; inset:0; background: rgba(255,255,255,0.36); }
+
+  header{
+    position:fixed; top:18px; left:18px; right:18px; z-index:30;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 18px; border-radius:12px;
+    background: rgba(255,255,255,0.78); backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(10,16,24,0.08); border:1px solid rgba(255,255,255,0.6);
+  }
+  .brand{ font-family:'Playfair Display'; font-weight:700; color:var(--navy) }
+  nav a{ margin-left:14px; text-decoration:none; color:var(--deep); font-weight:600 }
+
+  .page{ position:relative; z-index:10; max-width:900px; margin:120px auto; padding:24px; }
+
+  .title{ font-family:'Playfair Display'; font-size:42px; text-align:center; margin:0 0 10px 0; color:var(--navy) }
+  .divider{ width:80px; height:3px; background:var(--gold); margin:10px auto 28px; border-radius:8px }
+
+  .card{ background: rgba(255,255,255,0.9); padding:28px; border-radius:14px; box-shadow:0 18px 40px rgba(0,0,0,0.12) }
+
+  .tabs{ display:flex; gap:10px; margin-bottom:18px; }
+  .tab{ padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700; font-family:'Playfair Display'; background:#fff }
+  .tab.active{ background:#f7efe0 }
+
+  form{ display:grid; gap:12px; }
+  label{ font-size:14px; color:var(--muted); }
+  input{ padding:10px; border-radius:10px; border:1px solid #eef2f6; }
+
+  .btn{ padding:12px 16px; border-radius:12px; background:var(--navy); color:#fff; border:none; font-weight:700; cursor:pointer }
+  .btn.secondary{ background:transparent; color:var(--navy); border:1px solid #ddd }
+
+  .msg{ display:none; padding:10px; border-radius:10px; font-size:14px }
+  .msg.success{ background:#ecf9ef; color:#085a20 }
+  .msg.error{ background:#fff0f0; color:#8b1d1d }
+</style>
+</head>
+
+<body>
+
+<div class="backdrop"></div>
+
+<header>
+  <div class="brand">Shubh Leisure</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="packages.html">Packages</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<main class="page">
+  <h1 class="title">Account</h1>
+  <div class="divider"></div>
+
+  <section class="card">
+    <div class="tabs">
+      <button id="tabLogin" class="tab active" type="button">Login</button>
+      <button id="tabCreate" class="tab" type="button">Create Account</button>
+    </div>
+
+    <div id="msgSuccess" class="msg success"></div>
+    <div id="msgError" class="msg error"></div>
+
+    <form id="formLogin">
+      <label>Email</label>
+      <input id="loginEmail" type="email">
+
+      <label>Password</label>
+      <input id="loginPassword" type="password">
+
+      <button type="button" id="btnLogin" class="btn">Login</button>
+    </form>
+
+    <form id="formCreate" style="display:none">
+      <label>Email</label>
+      <input id="createEmail" type="email">
+
+      <label>Password</label>
+      <input id="createPassword" type="password">
+
+      <button type="button" id="btnCreate" class="btn">Create Account</button>
+    </form>
+  </section>
+</main>
+
+<script>
+const formLogin = document.getElementById("formLogin");
+const formCreate = document.getElementById("formCreate");
+const tabLogin = document.getElementById("tabLogin");
+const tabCreate = document.getElementById("tabCreate");
+
+tabLogin.onclick = () => {
+  tabLogin.classList.add("active");
+  tabCreate.classList.remove("active");
+  formLogin.style.display = "grid";
+  formCreate.style.display = "none";
+};
+
+tabCreate.onclick = () => {
+  tabCreate.classList.add("active");
+  tabLogin.classList.remove("active");
+  formCreate.style.display = "grid";
+  formLogin.style.display = "none";
+};
+
+document.getElementById("btnLogin").addEventListener("click", () => {
+  const email = document.getElementById("loginEmail").value.trim();
+  const pw = document.getElementById("loginPassword").value.trim();
+
+  if(!email || !pw){
+    alert("Enter email and password");
+    return;
+  }
+
+  localStorage.setItem("isLoggedIn", "true");
+
+  if(sessionStorage.getItem("pendingBooking") === "yes"){
+    sessionStorage.removeItem("pendingBooking");
+    window.location.href = "payment.html";
+  } else {
+    window.location.href = "index.html";
+  }
+});
+</script>
+
+<div class="copyright">©️ 2022 Shubh Leisure — All rights reserved</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Package • Shubh Leisure</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0d2233;--muted:#6f7a85;--beige:#f5efe6}
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial;background:linear-gradient(180deg,var(--beige),#fbfaf8);color:#0d2233}
+  header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:rgba(255,255,255,0.9);position:sticky;top:0}
+  .logo{font-family:'Playfair Display';font-weight:700}
+  nav a{margin-left:12px;text-decoration:none;color:#0d2233;font-weight:600}
+  .wrap{max-width:980px;margin:90px auto;padding:22px}
+  .card{background:#fff;padding:28px;border-radius:12px;box-shadow:0 12px 30px rgba(10,20,30,0.06)}
+  h1{font-family:'Playfair Display';font-size:28px;margin-bottom:6px}
+  .muted{color:var(--muted)}
+  .hero-img{width:100%;height:320px;border-radius:12px;overflow:hidden;margin-top:12px}
+  .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Shubh Leisure</div>
+  <nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a id="lnkLogin" href="login.html">Login</a></nav>
+</header>
+
+<div class="wrap" id="wrap">
+  <!-- content filled by JS -->
+</div>
+
+<script>
+  // helper: get query param id
+  function qp(name){
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+
+  // check login
+  const user = JSON.parse(localStorage.getItem('shubh_user') || 'null');
+  if(!user || !user.username){
+    // not logged in — save intended and redirect to login
+    const id = qp('id') || '';
+    sessionStorage.setItem('intended_package', id);
+    location.href = 'login.html';
+  } else {
+    // show package details
+    document.getElementById('lnkLogin').textContent = user.username + ' (Logout)';
+    document.getElementById('lnkLogin').href = '#';
+    document.getElementById('lnkLogin').onclick = ()=>{ localStorage.removeItem('shubh_user'); location.href='packages.html'; };
+
+    const id = qp('id');
+    const map = {
+      'wedding': {title:'Wedding Package', img:'https://images.unsplash.com/photo-1508606572321-901ea443707f?q=80&w=1200', desc:'Full wedding planning: mandap, decor, vendor curation, day coordination & more.'},
+      'engagement': {title:'Engagement Package', img:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200', desc:'Intimate engagement design and lighting plan.'},
+      'pooja': {title:'Pooja Package', img:'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200', desc:'Priest coordination, samagri, and respectful minimal decor.'},
+      'birthday': {title:'Birthday Package', img:'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=1200', desc:'Personalised birthday theming and guest experience.'},
+      'corporate': {title:'Corporate Events', img:'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200', desc:'Technical coordination, staging and hospitality.'},
+      'custom': {title:'Custom Experience', img:'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200', desc:'Fully bespoke journeys crafted to your vision.'}
+    };
+    const pkg = map[id] || {title:'Package', img:'https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200', desc:'Details coming soon.'};
+    const wrap = document.getElementById('wrap');
+    wrap.innerHTML = `
+      <div class="card">
+        <h1>${pkg.title}</h1>
+        <div class="muted">Hi ${user.username} — here are the package details</div>
+        <div class="hero-img"><img src="${pkg.img}" alt=""></div>
+        <p style="margin-top:12px">${pkg.desc}</p>
+        <div style="margin-top:18px;display:flex;gap:12px">
+          <button class="btn" onclick="alert('Booking flow not implemented yet — use Book page')">Request Booking</button>
+          <button class="btn" onclick="location.href='packages.html'">Back to Packages</button>
+        </div>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>
